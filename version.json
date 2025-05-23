@@ -1,6 +1,6 @@
 {
-  "version": "CoopsOS-v25.05.22-BETA",
-  "changelog": "Added new Easter Egg mode and UI polish",
-  "download_url": "https://github.com/coops8/CoopsOS-Termux-Suite/releases/download/v25.05.22/CoopsOS-v25.05.22-BETA.zip",
+  "version": "CoopsOS-v25.05.23-",
+  "changelog": "",
+  "download_url": "https://github.com/coops8/CoopsOS-Termux-Suite/releases/download/v25.05.23/CoopsOS-v25.05.23-.zip",
   "force_update": false
 }
