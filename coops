@@ -1,0 +1,62 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+function check_key() {
+  read -p "Enter Dev Key: " key
+  if [ "$key" == "coops-rom123654" ]; then
+    echo "Developer Mode Activated." | lolcat
+  else
+    echo "ACCESS DENIED. You will be logged out." | lolcat
+    exit 1
+  fi
+}
+
+case "$1" in
+  help)
+    echo ">>> CoopsOS Terminal Suite <<<"
+    echo "coops status       - Device Status"
+    echo "coops update       - Sync ROM builder"
+    echo "coops secure       - Lock system"
+    echo "coops devmode      - Enter Developer Mode"
+    echo "coops version      - Add new version"
+    echo "coops easteregg    - Activate hidden easteregg"
+    echo "coops changelog    - Track version"
+    echo "coops deploy       - Full update"
+    ;;
+  status)
+    neofetch
+    ;;
+  deploy)
+    bash ~/CoopsOSRepo/deploy-release.sh
+    ;;
+  update)
+    echo "Syncing latest CoopsOS Dev tools..." | lolcat
+    cd ~/CoopsOSRepo && git pull origin main
+    ;;
+  secure)
+    echo "!!! DEVICE LOCKDOWN MODE ACTIVATED !!!" | lolcat
+   termux-chroot
+    ;;
+  devmode)
+    check_key
+    ;;
+   easteregg)
+    echo "Welcome to CoopsGPT Mode..." | lolcat
+    sleep 1
+    echo "Booting infinite ideas module..." | lolcat
+    ;;
+   release)
+    bash ~/CoopsOSRepo/push-release.sh
+    ;;
+  changelog)
+    bash ~/CoopsOSRepo/track-changelog.sh
+    ;;
+   version)
+    bash ~/CoopsOSRepo/make-version.sh "$2" "$3"
+    ;;
+   build)
+    bash ~/ CoopsOSRepo/rom-builder.sh
+    ;;
+  *)
+    echo "Unknown command. Try: coops help"
+    ;;
+esac
