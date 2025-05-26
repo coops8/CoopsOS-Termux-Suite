@@ -1,11 +1,13 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-VERSION_FILE="$HOME/CoopsOSRepo/version.json"
-LOG_FILE="$HOME/CoopsOSRepo/changelog_history.md"
+LOG_FILE="CHANGELOG.md"
+VERSION=$(cat version.txt)
+DATE=$(date +"%Y-%m-%d %H:%M")
 
-VERSION=$(jq -r .version "$VERSION_FILE")
-CHANGELOG=$(jq -r .changelog "$VERSION_FILE")
-DATE=$(date)
+echo "Enter changelog for $VERSION (end with Ctrl+D):"
+echo -e "\n## $VERSION - $DATE\n" >> "$LOG_FILE"
+cat >> "$LOG_FILE"
+echo -e "\n---\n" >> "$LOG_FILE"
 
-echo -e "### $VERSION\n- $CHANGELOG\n- Date: $DATE\n" >> "$LOG_FILE"
-echo "Logged to $LOG_FILE"
+git add "$LOG_FILE"
+git commit -m "Changelog for $VERSION"
