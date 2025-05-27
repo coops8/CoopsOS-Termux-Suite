@@ -21,5 +21,10 @@ gh release create "$TAG_NAME" "$ZIP_DIR/$ZIP_NAME" \
   --repo "$REPO" \
   --title "$ZIP_NAME" \
   --notes "$CHANGELOG"
+#!/data/data/com.termux/files/usr/bin/bash
 
+echo "Pushing latest commits and tags to GitHub..." | lolcat
+git push origin main
+git push origin --tags
+echo "Deployment Complete!" | lolcat
 echo "Release $ZIP_NAME published successfully!"

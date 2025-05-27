@@ -11,3 +11,7 @@ echo -e "\n---\n" >> "$LOG_FILE"
 
 git add "$LOG_FILE"
 git commit -m "Changelog for $VERSION"
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo ">>> CoopsOS Changelog <<<" | lolcat
+git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
