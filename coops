@@ -21,6 +21,8 @@ case "$1" in
     echo "coops easteregg    - Activate hidden easteregg"
     echo "coops changelog    - Track version"
     echo "coops deploy       - Full update"
+    echo "coops release      - Release version"
+    echo "coops realese      - Other release version mode"
     ;;
   status)
     neofetch
